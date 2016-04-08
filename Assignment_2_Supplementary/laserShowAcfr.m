@@ -27,7 +27,7 @@ for i = 1:length(laser_scans)
      hold off
      plot(xpoint(:), ypoint(:), '.');
      hold on
-     Lines = LineSplit([xpoint',ypoint']);
+     Lines = LineSplit([xpoint',ypoint'],0.1);
      axis equal;
      axis([0 10 -5 5]);
      xlabel('X (meter)')

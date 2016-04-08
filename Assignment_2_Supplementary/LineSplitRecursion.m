@@ -1,9 +1,9 @@
 
 
-function [LineDataStore,done]  = LineSplitRecursion(Data,beginindex,endindex,done,LineDataStore)
+function [LineDataStore]  = LineSplitRecursion(Data,beginindex,endindex,threshold,LineDataStore)
 
 % check if done?
-        threshold = 0.1; % hardcoded atm
+%         threshold = 0.1; % hardcoded atm
         
         L_ab = line2points(Data(beginindex,:),Data(endindex,:));
         Dis = perpdis(L_ab,Data(beginindex:endindex,:));
@@ -11,15 +11,19 @@ function [LineDataStore,done]  = LineSplitRecursion(Data,beginindex,endindex,don
         maxindex = maxindex + beginindex - 1;
         if maxdis > threshold    % go down 
 
-            [LineDataStore,done] = LineSplitRecursion(Data,beginindex,maxindex,done,LineDataStore);
-            [LineDataStore,done] = LineSplitRecursion(Data,maxindex,endindex,done,LineDataStore);
+            [LineDataStore] = LineSplitRecursion(Data,beginindex,maxindex,threshold,LineDataStore);
+            [LineDataStore] = LineSplitRecursion(Data,maxindex,endindex,threshold,LineDataStore);
 
 %             if maxindex == beginindex
 %                 maxindex = size(Data,1);
 %             end
-        else % threshold reached
+        elseif endindex-beginindex < 3 % have some minimum number of points?
+            % no line
+        
+        else      
+            % threshold reached
             % calculate lines
-            done = 1;
+          
             LineDataStore(:,end+1) = LSM(Data(beginindex:endindex,:));
             plotline(LineDataStore(:,end),Data(beginindex:endindex,:));
 %             

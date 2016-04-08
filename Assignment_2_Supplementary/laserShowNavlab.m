@@ -28,8 +28,10 @@ for i=1:N_scan
     y = SICK.data(i,:).*sin(angle);    
     figure(1)
     clf
-    hold on    
+    hold off    
     plot(y,x,'.')
+    hold on
+    Lines = LineSplit([y',x'],5);
     axis([-40 40 0 60])
     xlabel('Y (meter)')
     ylabel('X (meter)')

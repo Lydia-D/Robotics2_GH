@@ -15,8 +15,8 @@
 % Notes: Have some error checking that it cant use the next point as a
 % split if they are close enough?
 %%
-function LineDataStore = LineSplit(Data)
-    threshold = 0.1;
+function LineDataStore = LineSplit(Data,threshold)
+%     threshold = 1;
     beginindex = 1;
     endindex = size(Data,1);
     done = 0;
@@ -24,7 +24,7 @@ function LineDataStore = LineSplit(Data)
 %     while beginindex < size(Data,1)
         
   
-        [LineDataStore,done]  = LineSplitRecursion(Data,beginindex,endindex,done,LineDataStore);
+        [LineDataStore]  = LineSplitRecursion(Data,beginindex,endindex,threshold,LineDataStore);
 
         % remove inital LineDataStore? [0;0] how else to save in recursion?
 

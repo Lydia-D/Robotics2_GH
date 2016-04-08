@@ -7,6 +7,6 @@ load mydata
 
 fig = figure(1);
 scatter(mydata(:,1),mydata(:,2));
-Lines = LineSplit(mydata);
+Lines = LineSplit(mydata,0.1);
 
 % plotlines(Lines,Data,fig);
