@@ -1,0 +1,32 @@
+
+
+function [Linefront,Lineback,maxindex,done]  = LineSplitRecursion(Data,beginindex,endindex,done)
+
+% check if done?
+
+        L_ab = line2points(Data(beginindex,:),Data(endindex,:));
+        Dis = perpdis(L_ab,Data(beginindex:endindex,:));
+        [maxdis,maxindex] = max(abs(Dis));
+        maxindex = maxindex + beginindex - 1;
+        if maxdis > threshold    % go down 
+
+
+            [Linefront,Lineback,maxindex,done] = LineSplitRecursion(Data(beginindex:maxindex,:),beginindex,endindex)
+%             if maxindex == beginindex
+%                 maxindex = size(Data,1);
+%             end
+
+            Linefront = LSM(Data(beginindex:maxindex,:));
+            Lineback = LSM(Data(maxindex:endindex,:));
+            
+            
+            % next step down
+            if done = 0;
+                
+       
+        
+        else
+            done = 1; % stop looping?
+        end
+        
+end

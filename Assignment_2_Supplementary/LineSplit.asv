@@ -1,0 +1,46 @@
+%% Line splitting
+% L Drabsch
+% 8/4/16
+% Steps: 1) take first and last data point and make line function
+%        2) calculate perpendicular distances
+%        3) find the max perpendicular distance = PointP
+%        4) use LSM between first data point and PointP
+%        5) Use PointP as 'first' data point and repeat from step 1
+
+% Inputs: Data =  [xvec,yvec]
+
+% Outputs: Lines = [a1,a2...an;b1,b2...bn]
+
+
+% Notes: Have some error checking that it cant use the next point as a
+% split if they are close enough?
+%%
+function Lines = LineSplit(Data)
+    beginindex = 1;
+    Lines(2,1) = 0;  % initalise size
+    i = 1;
+    while beginindex < size(Data,1)
+    L_ab = line2points(Data(beginindex,:),Data(end,:));
+    Dis = perpdis(L_ab,Data(beginindex:end,:));
+    [~,maxindex] = max(abs(Dis));
+    maxindex = maxindex + beginindex - 1;
+   
+    if maxindex == beginindex
+        maxindex = size(Data,1);
+    end
+    
+    Lines(:,i) = LSM(Data(beginindex:maxindex,:));
+    Lines(:,i) = LSM(Data(maxindex:end,:));
+
+    
+    
+    
+    plotline(Lines(:,i),Data(maxindex:end,:));
+
+    
+    beginindex = maxindex;
+    i = i+1;
+    end
+    
+
+end
