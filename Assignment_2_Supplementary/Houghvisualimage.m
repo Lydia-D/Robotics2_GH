@@ -2,7 +2,7 @@
 % http://graphics.lcs.mit.edu/~ifni/tutorials/hough_line/find_hough_lines.html
 
 % Load an image
-I = imread('..\datasets\indoor1.jpeg');  
+I = imread('.\indoor1.jpeg');  
 I = double(imresize(I(:,:,2),.2))/255;  
 
 figure, imshow(I)
@@ -12,7 +12,7 @@ title ('Original Image')
 % E = sqrt(filter2(H,I).^2+filter2(V,I).^2);  
 
 % or threshold its edges
-E = edge(I);
+E = edge(I,'canny');
 figure, imshow(E);
 title ('Gradient Image')
 

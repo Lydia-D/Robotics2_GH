@@ -7,7 +7,7 @@
 clear 
 close all
 % load laser files
-laser_scans=load('..\datasets\captureScanshornet.txt');
+laser_scans=load('.\captureScanshornet.txt');
 t0 = laser_scans(1,1);
 
 % Scan A
