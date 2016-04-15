@@ -2,7 +2,7 @@
 % L Drabsch /4/16
 % for fitting a line to a list of scan points
 
-% inputs: column vector x and y
+% inputs: data = [x column vec, y column vec]
 % outputs: line = [a;b] (y = ax+b)
 
 function line = LSM(data)
@@ -20,7 +20,3 @@ function line = LSM(data)
     end
 end
     
-
-
-
-

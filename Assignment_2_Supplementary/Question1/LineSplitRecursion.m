@@ -1,6 +1,6 @@
 
 
-function [LineDataStore]  = LineSplitRecursion(Data,beginindex,endindex,threshold,LineDataStore)
+function [LineDataStore]  = LineSplitRecursion(Data,beginindex,endindex,threshold,LineDataStore,minpoints)
 
 % check if done?
 %         threshold = 0.1; % hardcoded atm
@@ -11,13 +11,10 @@ function [LineDataStore]  = LineSplitRecursion(Data,beginindex,endindex,threshol
         maxindex = maxindex + beginindex - 1;
         if maxdis > threshold    % go down 
 
-            [LineDataStore] = LineSplitRecursion(Data,beginindex,maxindex,threshold,LineDataStore);
-            [LineDataStore] = LineSplitRecursion(Data,maxindex,endindex,threshold,LineDataStore);
+            [LineDataStore] = LineSplitRecursion(Data,beginindex,maxindex,threshold,LineDataStore,minpoints);
+            [LineDataStore] = LineSplitRecursion(Data,maxindex,endindex,threshold,LineDataStore,minpoints);
 
-%             if maxindex == beginindex
-%                 maxindex = size(Data,1);
-%             end
-        elseif endindex-beginindex < 3 % have some minimum number of points?
+        elseif endindex-beginindex < minpoints % have some minimum number of points?
             % no line
         
         else      

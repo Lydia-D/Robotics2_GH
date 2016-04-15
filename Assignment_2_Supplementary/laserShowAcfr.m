@@ -5,7 +5,7 @@
 
 clear 
 close all
-
+addpath('.\Question1')
 % load laser files
 laser_scans=load('.\captureScanshornet.txt');
 
@@ -27,7 +27,7 @@ for i = 1:length(laser_scans)
      hold off
      plot(xpoint(:), ypoint(:), '.');
      hold on
-     Lines = LineSplit([xpoint',ypoint'],0.1);
+     Lines = LineSplit([xpoint',ypoint'],0.1,3);
      axis equal;
      axis([0 10 -5 5]);
      xlabel('X (meter)')
