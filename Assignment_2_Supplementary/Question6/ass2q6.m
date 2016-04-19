@@ -52,11 +52,27 @@ fopen(t);
 % sendCommand(t,'<h2>\n')		%Set tool height to 2 cubes
 % sendCommand(t,'<a45>\n')	%Set tool angle to 45 deg
 
+% mat = [x column, ycolumn]
+% angle = [deg column]  % defined from vertical
+tower = [0,490];
+home = [0,400];
+grip(0);
 
+for block = 1:1:5
+    % first block
+    moveh(1);
+    moveto(mat(block,1),mat(block,2));
+    setangle(angle(block));
+    moveh(0);
+    grip(1);
+    moveh(block);
+    setangle(0);
+    moveto(tower(1),tower(2));
+    moveh(block-1);
+    grip(0);
+    moveto(home(1),home(2));
 
-
-
-
+end
 
 %% CLOSE NETWORK PORT AND CAMERA
 delete(vid)
