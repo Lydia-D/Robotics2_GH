@@ -12,6 +12,7 @@ function [LineDataStore]  = LineSplitRecursionAnimation(Data,beginindex,endindex
         [maxdis,maxindex] = max(abs(Dis));
         maxindex = maxindex + beginindex - 1;
             plot(Data(maxindex,1),Data(maxindex,2),'xr','Markersize',10);
+        keyboard;
         if maxdis > threshold    % go down 
 
             [LineDataStore] = LineSplitRecursionAnimation(Data,beginindex,maxindex,threshold,LineDataStore,minpoints);

@@ -28,7 +28,7 @@ function [Corner,CornerLines] = findcorner(Lines, IndexDomain, mydata,spacbuffer
     Corner = Corner(:,2:end); % remove inital NaNs
     CornerLines = CornerLines(:,2:end); % remove inital NaNs
 
-    plot(Corner(1,:),Corner(2,:),'cx')     
+    plot(Corner(1,:),Corner(2,:),'co','MarkerSize',7)     
     
     
 end

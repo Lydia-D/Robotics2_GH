@@ -59,19 +59,17 @@ home = [0,400];
 grip(0);
 
 for block = 1:1:5
-    % first block
-    moveh(1);
-    moveto(mat(block,1),mat(block,2));
-    setangle(angle(block));
-    moveh(0);
-    grip(1);
-    moveh(block);
-    setangle(0);
-    moveto(tower(1),tower(2));
-    moveh(block-1);
-    grip(0);
-    moveto(home(1),home(2));
-
+    moveh(1,t);
+    moveto(mat(block,1),mat(block,2),t);
+    setangle(angle(block),t);
+    moveh(0,t);
+    grip(1,t);
+    moveh(block,t);
+    setangle(0,t);
+    moveto(tower(1),tower(2),t);
+    moveh(block-1,t);
+    grip(0,t);
+    moveto(home(1),home(2),t);
 end
 
 %% CLOSE NETWORK PORT AND CAMERA

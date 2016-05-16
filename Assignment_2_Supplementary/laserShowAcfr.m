@@ -28,11 +28,12 @@ for i = 1:length(laser_scans)
      plot(xpoint(:), ypoint(:), '.');
      hold on
      [Lines,IndexDomain] = LineSplit([xpoint',ypoint'],0.1,3);
-     Corner = findcorner(Lines, IndexDomain, [xpoint',ypoint']);
+     Corner = findcorner(Lines, IndexDomain, [xpoint',ypoint'],0.02,0.1);
      axis equal;
      axis([0 10 -5 5]);
      xlabel('X (meter)')
      ylabel('Y (meter)')
      title(sprintf('ACFR indoor SICK data: scan %d',i))
      drawnow
+     keyboard;
 end

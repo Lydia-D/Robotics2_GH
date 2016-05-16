@@ -1,0 +1,4 @@
+% Vertical laser offset (measured in NED relative to the IMU)
+%
+% x(m) y(m) z(m) roll(rad) pitch(rad) yaw(rad)
+0.2107,-0.0036,-0.7462,1.5654,0.0187,-0.0102

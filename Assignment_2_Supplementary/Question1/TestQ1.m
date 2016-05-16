@@ -3,8 +3,8 @@
 close all
 clear all
 clc
-% load mydata
-load myblocks
+load mydata
+% load myblocks
 % mydata = sortrows(mydata, 1);
 % mydata = mydata(9:end,:);
 fig = figure(1);
